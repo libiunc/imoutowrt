@@ -174,7 +174,9 @@
 				speed = <2500>;
 				full-duplex;
 				pause;
-				
+			};
+		};
+
 		port@6 {
 			reg = <6>;
 			ethernet = <&gmac0>;
@@ -184,7 +186,7 @@
 				speed = <2500>;
 				full-duplex;
 				pause;
-			
+			};
 		};
 	};
 };
