@@ -698,8 +698,8 @@ define U-Boot/mt7986_netcore_n60_pro
   UBOOT_IMAGE:=u-boot.fip
   BL2_BOOTDEV:=spim-nand
   BL2_SOC:=mt7986
-  BL2_DDRTYPE:=ddr3
-  DEPENDS:=+trusted-firmware-a-mt7986-spim-nand-ddr3
+  BL2_DDRTYPE:=ddr4
+  DEPENDS:=+trusted-firmware-a-mt7986-spim-nand-ddr4
 endef
 
 define U-Boot/mt7986_tplink_tl-xdr4288
