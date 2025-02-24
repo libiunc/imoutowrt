@@ -977,6 +977,7 @@ UBOOT_TARGETS := \
 	mt7986_jdcloud_re-cp-03 \
 	mt7986_mercusys_mr90x-v1 \
 	mt7986_netcore_n60 \
+	mt7986_netcore_n60_pro \
 	mt7986_tplink_tl-xdr4288 \
 	mt7986_tplink_tl-xdr6086 \
 	mt7986_tplink_tl-xdr6088 \
