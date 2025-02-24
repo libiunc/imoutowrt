@@ -690,11 +690,11 @@ define U-Boot/mt7986_netcore_n60
   DEPENDS:=+trusted-firmware-a-mt7986-spim-nand-ddr3
 endef
 
-define U-Boot/mt7986_netcore_n60_pro
+define U-Boot/mt7986_netcore_n60-pro
   NAME:=Netcore N60 Pro
   BUILD_SUBTARGET:=filogic
-  BUILD_DEVICES:=netcore_n60_pro
-  UBOOT_CONFIG:=mt7986_netcore_n60_pro
+  BUILD_DEVICES:=netcore_n60-pro
+  UBOOT_CONFIG:=mt7986_netcore_n60-pro
   UBOOT_IMAGE:=u-boot.fip
   BL2_BOOTDEV:=spim-nand
   BL2_SOC:=mt7986
@@ -977,7 +977,7 @@ UBOOT_TARGETS := \
 	mt7986_jdcloud_re-cp-03 \
 	mt7986_mercusys_mr90x-v1 \
 	mt7986_netcore_n60 \
-	mt7986_netcore_n60_pro \
+	mt7986_netcore_n60-pro \
 	mt7986_tplink_tl-xdr4288 \
 	mt7986_tplink_tl-xdr6086 \
 	mt7986_tplink_tl-xdr6088 \
