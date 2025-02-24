@@ -162,7 +162,6 @@
 		port@5 {
 			reg = <5>;
 			label = "lan4";
-			phy-mode = "2500base-x";
 		};
 
 		port@6 {
