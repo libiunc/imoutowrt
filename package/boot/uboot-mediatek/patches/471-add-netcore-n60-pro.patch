@@ -1,5 +1,5 @@
 --- /dev/null
-+++ b/configs/mt7986_netcore_n60-pro_defconfig
++++ b/configs/mt7986_netcore_n60_pro_defconfig
 @@ -0,0 +1,127 @@
 +CONFIG_ARM=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
