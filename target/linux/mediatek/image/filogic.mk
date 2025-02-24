@@ -1442,7 +1442,7 @@ define Device/netcore_n60
 endef
 TARGET_DEVICES += netcore_n60
 
-define Device/netcore_n60_pro
+define Device/netcore_n60-pro
   DEVICE_VENDOR := Netcore
   DEVICE_MODEL := N60 Pro
   DEVICE_DTS := mt7986a-netcore-n60-pro
@@ -1464,7 +1464,7 @@ define Device/netcore_n60_pro
 	kmod-usb3 automount f2fsck mkf2fs uqmi
   ARTIFACTS := preloader.bin bl31-uboot.fip
   ARTIFACT/preloader.bin := mt7986-bl2 spim-nand-ddr4
-  ARTIFACT/bl31-uboot.fip := mt7986-bl31-uboot netcore_n60_pro
+  ARTIFACT/bl31-uboot.fip := mt7986-bl31-uboot netcore_n60-pro
 endef
 TARGET_DEVICES += netcore_n60_pro
 
