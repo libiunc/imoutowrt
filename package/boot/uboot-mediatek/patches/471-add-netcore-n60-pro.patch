@@ -1,5 +1,5 @@
 --- /dev/null
-+++ b/configs/mt7986_netcore_n60_pro_defconfig
++++ b/configs/mt7986_netcore_n60-pro_defconfig
 @@ -0,0 +1,127 @@
 +CONFIG_ARM=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
@@ -75,7 +75,7 @@
 +CONFIG_ENV_UBI_VOLUME_REDUND="ubootenv2"
 +CONFIG_SYS_RELOC_GD_ENV_ADDR=y
 +CONFIG_USE_DEFAULT_ENV_FILE=y
-+CONFIG_DEFAULT_ENV_FILE="defenvs/netcore_n60_pro_env"
++CONFIG_DEFAULT_ENV_FILE="defenvs/netcore_n60-pro_env"
 +CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
 +CONFIG_VERSION_VARIABLE=y
 +CONFIG_NETCONSOLE=y
@@ -317,7 +317,7 @@
 +	status = "disabled";
 +};
 --- /dev/null
-+++ b/defenvs/netcore_n60_pro_env
++++ b/defenvs/netcore_n60-pro_env
 @@ -0,0 +1,57 @@
 +ipaddr=192.168.1.1
 +serverip=192.168.1.254
@@ -327,9 +327,9 @@
 +bootconf=config-1
 +bootdelay=0
 +bootfile=immortalwrt-mediatek-filogic-netcore_n60-proinitramfs-recovery.itb
-+bootfile_bl2=immortalwrt-mediatek-filogic-netcore_n60_pro-preloader.bin
-+bootfile_fip=immortalwrt-mediatek-filogic-netcore_n60_pro-bl31-uboot.fip
-+bootfile_upg=immortalwrt-mediatek-filogic-netcore_n60_pro-squashfs-sysupgrade.itb
++bootfile_bl2=immortalwrt-mediatek-filogic-netcore_n60-pro-preloader.bin
++bootfile_fip=immortalwrt-mediatek-filogic-netcore_n60-pro-bl31-uboot.fip
++bootfile_upg=immortalwrt-mediatek-filogic-netcore_n60-pro-squashfs-sysupgrade.itb
 +bootled_pwr=green:status
 +bootled_rec=red:status
 +bootmenu_confirm_return=askenv - Press ENTER to return to menu ; bootmenu 60
