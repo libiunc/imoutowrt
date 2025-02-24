@@ -327,9 +327,9 @@
 +bootconf=config-1
 +bootdelay=0
 +bootfile=immortalwrt-mediatek-filogic-netcore_n60-proinitramfs-recovery.itb
-+bootfile_bl2=immortalwrt-mediatek-filogic-netcore_n60-pro-preloader.bin
-+bootfile_fip=immortalwrt-mediatek-filogic-netcore_n60-pro-bl31-uboot.fip
-+bootfile_upg=immortalwrt-mediatek-filogic-netcore_n60-pro-squashfs-sysupgrade.itb
++bootfile_bl2=immortalwrt-mediatek-filogic-netcore_n60_pro-preloader.bin
++bootfile_fip=immortalwrt-mediatek-filogic-netcore_n60_pro-bl31-uboot.fip
++bootfile_upg=immortalwrt-mediatek-filogic-netcore_n60_pro-squashfs-sysupgrade.itb
 +bootled_pwr=green:status
 +bootled_rec=red:status
 +bootmenu_confirm_return=askenv - Press ENTER to return to menu ; bootmenu 60
