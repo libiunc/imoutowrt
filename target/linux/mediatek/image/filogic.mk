@@ -1466,7 +1466,7 @@ define Device/netcore_n60-pro
   ARTIFACT/preloader.bin := mt7986-bl2 spim-nand-ddr4
   ARTIFACT/bl31-uboot.fip := mt7986-bl31-uboot netcore_n60-pro
 endef
-TARGET_DEVICES += netcore_n60_pro
+TARGET_DEVICES += netcore_n60-pro
 
 define Device/netgear_wax220
   DEVICE_VENDOR := NETGEAR
