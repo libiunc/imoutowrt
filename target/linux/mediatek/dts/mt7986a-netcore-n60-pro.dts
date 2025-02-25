@@ -61,16 +61,25 @@
 			gpios = <&pio 32 GPIO_ACTIVE_LOW>;
 		};
 	};
-	
-	usb_vbus: regulator-usb-vbus {
+
+	reg_3p3v: regulator-3p3v {
 		compatible = "regulator-fixed";
-		regulator-name = "usb_vbus";
+		regulator-name = "fixed-3.3V";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-boot-on;
+		regulator-always-on;
+	};
+
+	reg_5v: regulator-5v {
+		compatible = "regulator-fixed";
+		regulator-name = "fixed-5V";
 		regulator-min-microvolt = <5000000>;
 		regulator-max-microvolt = <5000000>;
-		gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
-		enable-active-high;
 		regulator-boot-on;
+		regulator-always-on;
 	};
+
 };
 
 &crypto {
@@ -280,7 +289,7 @@
 
 &ssusb {
 	vusb33-supply = <&reg_3p3v>;
-	vbus-supply = <&usb_vbus>;
+	vbus-supply = <&reg_5v>;
 	status = "okay";
 };
 
