@@ -278,7 +278,17 @@
 	status = "okay";
 };
 
+&ssusb {
+	vusb33-supply = <&reg_3p3v>;
+	vbus-supply = <&usb_vbus>;
+	status = "okay";
+};
+
 &uart0 {
+	status = "okay";
+};
+
+&usb_phy {
 	status = "okay";
 };
 
