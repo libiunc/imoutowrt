@@ -55,7 +55,7 @@
 			gpios = <&pio 13 GPIO_ACTIVE_HIGH>;
 		};
 		
-		status-blue {
+		sys_status-blue {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_POWER;
 			gpios = <&pio 29 GPIO_ACTIVE_HIGH>;
