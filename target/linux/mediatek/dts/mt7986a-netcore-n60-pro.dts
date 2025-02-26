@@ -61,19 +61,19 @@
 			gpios = <&pio 29 GPIO_ACTIVE_HIGH>;
 		};
 
-		usb_status_blue: status-blue {
+		usb_status_blue {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_STATUS;
 			gpios = <&pio 30 GPIO_ACTIVE_HIGH>;
 		};
 
-		mesh_status_blue: status-blue {
+		mesh_status_blue {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_STATUS;
 			gpios = <&pio 31 GPIO_ACTIVE_HIGH>;
 		};
 
-		wlan_status_blue: status-blue {
+		wlan_status_blue {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_STATUS;
 			gpios = <&pio 32 GPIO_ACTIVE_HIGH>;
