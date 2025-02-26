@@ -14,8 +14,8 @@
 	aliases {
 		serial0 = &uart0;
 		label-mac-device = &gmac0;
-		led-boot = &led_status_red;
-		led-failsafe = &led_status_red;
+		led-boot = &led_status_blue;
+		led-failsafe = &led_status_blue;
 		led-running = &led_status_blue;
 		led-upgrade = &led_status_blue;
 	};
@@ -49,16 +49,34 @@
 	leds {
 		compatible = "gpio-leds";
 
-		led_status_red: status-red {
-			color = <LED_COLOR_ID_RED>;
-			function = LED_FUNCTION_STATUS;
-			gpios = <&pio 29 GPIO_ACTIVE_LOW>;
-		};
-
-		led_status_blue: status-blue {
+		power_led: sys_status_blue: status-blue {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_STATUS;
-			gpios = <&pio 32 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 13 GPIO_ACTIVE_HIGH>;
+		};
+		
+		status-blue {
+			color = <LED_COLOR_ID_BLUE>;
+			function = LED_FUNCTION_POWER;
+			gpios = <&pio 29 GPIO_ACTIVE_HIGH>;
+		};
+
+		usb_status_blue: status-blue {
+			color = <LED_COLOR_ID_BLUE>;
+			function = LED_FUNCTION_STATUS;
+			gpios = <&pio 30 GPIO_ACTIVE_HIGH>;
+		};
+
+		mesh_status_blue: status-blue {
+			color = <LED_COLOR_ID_BLUE>;
+			function = LED_FUNCTION_STATUS;
+			gpios = <&pio 31 GPIO_ACTIVE_HIGH>;
+		};
+
+		wlan_status_blue: status-blue {
+			color = <LED_COLOR_ID_BLUE>;
+			function = LED_FUNCTION_STATUS;
+			gpios = <&pio 32 GPIO_ACTIVE_HIGH>;
 		};
 	};
 
