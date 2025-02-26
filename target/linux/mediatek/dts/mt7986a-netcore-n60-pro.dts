@@ -14,10 +14,10 @@
 	aliases {
 		serial0 = &uart0;
 		label-mac-device = &gmac0;
-		led-boot = &power_status_blue;
-		led-failsafe = &power_status_blue;
-		led-running = &power_status_blue;
-		led-upgrade = &power_status_blue;
+		led-boot = &power_led_blue;
+		led-failsafe = &power_led_blue;
+		led-running = &power_led_blue;
+		led-upgrade = &power_led_blue;
 	};
 
 	chosen {
