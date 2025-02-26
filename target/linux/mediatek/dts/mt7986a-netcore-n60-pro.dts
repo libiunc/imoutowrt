@@ -69,7 +69,7 @@
 
 		mesh_status_blue {
 			color = <LED_COLOR_ID_BLUE>;
-			function = LED_FUNCTION_MESH;
+			function = LED_FUNCTION_STATUS;
 			gpios = <&pio 31 GPIO_ACTIVE_LOW>;
 		};
 
