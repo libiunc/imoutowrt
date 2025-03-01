@@ -14,10 +14,10 @@
 	aliases {
 		serial0 = &uart0;
 		label-mac-device = &gmac0;
-		led-boot = &sys_status_blue;
-		led-failsafe = &sys_status_blue;
-		led-running = &sys_status_blue;
-		led-upgrade = &sys_status_blue;
+		led-boot = &sys_status;
+		led-failsafe = &sys_status;
+		led-running = &sys_status;
+		led-upgrade = &sys_status;
 	};
 
 	chosen {
@@ -49,25 +49,25 @@
 	leds {
 		compatible = "gpio-leds";
 
-		sys_status_blue: status_blue {
+		sys_status: status {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_POWER;
 			gpios = <&pio 29 GPIO_ACTIVE_LOW>;
 		};
 
-		usb_status_blue {
+		usb {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_USB;
 			gpios = <&pio 30 GPIO_ACTIVE_LOW>;
 		};
 
-		mesh_status_blue {
+		mesh {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_STATUS;
 			gpios = <&pio 31 GPIO_ACTIVE_LOW>;
 		};
 
-		wan_status_blue {
+		wan {
 			color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_WAN;
 			gpios = <&pio 32 GPIO_ACTIVE_LOW>;
@@ -239,11 +239,11 @@
 					compatible = "fixed-layout";
 					#address-cells = <1>;
 					#size-cells = <1>;
-			
+
 					macaddr_lan: macaddr@1fef20 {
 						reg = <0x1fef20 0x6>;
 					};
-			
+
 					macaddr_wan: macaddr@1fef26 {
 						reg = <0x1fef26 0x6>;
 					};
