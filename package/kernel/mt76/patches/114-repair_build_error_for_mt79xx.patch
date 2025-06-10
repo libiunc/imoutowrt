@@ -1,0 +1,28 @@
+From fec84b4b31fea88c6067ef55d9f340b10ad22f68 Mon Sep 17 00:00:00 2001
+From: libriunk <libriunc@gmail.com>
+Date: Thu, 29 May 2025 05:58:11 +0800
+Subject: [PATCH] repair build error for mt7915e
+
+Signed-off-by: libriunk <libriunc@gmail.com>
+---
+ trace.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/trace.h b/trace.h
+index c3d0ef8e..96719638 100644
+--- a/trace.h
++++ b/trace.h
+@@ -14,8 +14,8 @@
+ 
+ #define MAXNAME		32
+ #define DEV_ENTRY	__array(char, wiphy_name, 32)
+-#define DEVICE_ASSIGN	strlcpy(__entry->wiphy_name,	\
+-				wiphy_name(dev->hw->wiphy), MAXNAME)
++#define DEVICE_ASSIGN   strncpy(__entry->wiphy_name, wiphy_name(dev->hw->wiphy), MAXNAME - 1); \
++                                entry->wiphy_name[MAXNAME - 1] = '\0'
+ #define DEV_PR_FMT	"%s"
+ #define DEV_PR_ARG	__entry->wiphy_name
+ 
+-- 
+2.48.1
+

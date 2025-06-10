@@ -1,0 +1,28 @@
+From 12a78337d164e058ec83e2377690e0dfab013386 Mon Sep 17 00:00:00 2001
+From: libiunc <libriunc@gmail.com>
+Date: Wed, 11 Jun 2025 00:38:43 +0800
+Subject: [PATCH] repair build error for mt7615e
+
+---
+ mt7615/mt7615_trace.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/mt7615/mt7615_trace.h b/mt7615/mt7615_trace.h
+index d3eb49d8..2c3f6762 100644
+--- a/mt7615/mt7615_trace.h
++++ b/mt7615/mt7615_trace.h
+@@ -14,8 +14,9 @@
+ 
+ #define MAXNAME		32
+ #define DEV_ENTRY	__array(char, wiphy_name, 32)
+-#define DEV_ASSIGN	strlcpy(__entry->wiphy_name,	\
+-				wiphy_name(mt76_hw(dev)->wiphy), MAXNAME)
++#define DEV_ASSIGN							\
++    strncpy(__entry->wiphy_name, wiphy_name(mt76_hw(dev)->wiphy), MAXNAME - 1); \
++    __entry->wiphy_name[MAXNAME - 1] = '\0'
+ #define DEV_PR_FMT	"%s"
+ #define DEV_PR_ARG	__entry->wiphy_name
+ 
+-- 
+2.48.1
+
