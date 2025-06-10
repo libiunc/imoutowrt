@@ -10,10 +10,19 @@
  	};
  
  	cpus {
+<<<<<<< HEAD
 @@ -234,6 +237,26 @@
  	assigned-clocks = <&topckgen CLK_TOP_MSDC30_0_SEL>;
  	assigned-clock-parents = <&topckgen CLK_TOP_UNIV48M>;
  	non-removable;
+=======
+@@ -245,6 +248,28 @@
+ 	assigned-clocks = <&topckgen CLK_TOP_MSDC30_0_SEL>;
+ 	assigned-clock-parents = <&topckgen CLK_TOP_UNIV48M>;
+ 	non-removable;
++	#address-cells = <1>;
++	#size-cells = <0>;
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 +
 +	card@0 {
 +		compatible = "mmc-card";
@@ -37,10 +46,19 @@
  };
  
  &mmc1 {
+<<<<<<< HEAD
 @@ -249,6 +272,26 @@
  	vqmmc-supply = <&reg_3p3v>;
  	assigned-clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>;
  	assigned-clock-parents = <&topckgen CLK_TOP_UNIV48M>;
+=======
+@@ -260,6 +285,28 @@
+ 	vqmmc-supply = <&reg_3p3v>;
+ 	assigned-clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>;
+ 	assigned-clock-parents = <&topckgen CLK_TOP_UNIV48M>;
++	#address-cells = <1>;
++	#size-cells = <0>;
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 +
 +	card@0 {
 +		compatible = "mmc-card";
@@ -64,7 +82,11 @@
  };
  
  &nandc {
+<<<<<<< HEAD
 @@ -282,15 +325,30 @@
+=======
+@@ -293,15 +340,30 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  				read-only;
  			};
  

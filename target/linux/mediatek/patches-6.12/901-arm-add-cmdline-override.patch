@@ -1,6 +1,10 @@
 --- a/arch/arm/Kconfig
 +++ b/arch/arm/Kconfig
+<<<<<<< HEAD
 @@ -1568,6 +1568,14 @@ config ARM_ATAG_DTB_COMPAT_CMDLINE_EXTEN
+=======
+@@ -1505,6 +1505,14 @@ config ARM_ATAG_DTB_COMPAT_CMDLINE_EXTEN
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  
  endchoice
  
@@ -17,7 +21,11 @@
  	default ""
 --- a/drivers/of/fdt.c
 +++ b/drivers/of/fdt.c
+<<<<<<< HEAD
 @@ -1189,6 +1189,17 @@ int __init early_init_dt_scan_chosen(cha
+=======
+@@ -1053,6 +1053,17 @@ int __init early_init_dt_scan_chosen(cha
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	if (p != NULL && l > 0)
  		strlcat(cmdline, p, min_t(int, strlen(cmdline) + (int)l, COMMAND_LINE_SIZE));
  
@@ -29,7 +37,11 @@
 +#ifdef CONFIG_CMDLINE_OVERRIDE
 +	p = of_get_flat_dt_prop(node, "bootargs-override", &l);
 +	if (p != NULL && l > 0)
+<<<<<<< HEAD
 +		strlcpy(cmdline, p, min((int)l, COMMAND_LINE_SIZE));
+=======
++		strscpy(cmdline, p, min((int)l, COMMAND_LINE_SIZE));
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 +#endif
 +
  handle_cmdline:
@@ -37,7 +49,11 @@
  	 * CONFIG_CMDLINE is meant to be a default in case nothing else
 --- a/arch/arm64/Kconfig
 +++ b/arch/arm64/Kconfig
+<<<<<<< HEAD
 @@ -2309,6 +2309,14 @@ config CMDLINE_FORCE
+=======
+@@ -2380,6 +2380,14 @@ config CMDLINE_FORCE
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  
  endchoice
  

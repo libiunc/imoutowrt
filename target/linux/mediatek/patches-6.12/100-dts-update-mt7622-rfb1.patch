@@ -41,7 +41,11 @@
  		device_type = "memory";
  	};
  
+<<<<<<< HEAD
 @@ -133,22 +132,22 @@
+=======
+@@ -145,22 +144,22 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  
  				port@0 {
  					reg = <0>;
@@ -68,7 +72,11 @@
  				};
  
  				port@4 {
+<<<<<<< HEAD
 @@ -240,7 +239,22 @@
+=======
+@@ -264,7 +263,22 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	status = "okay";
  };
  
@@ -91,7 +99,11 @@
  	/* eMMC is shared pin with parallel NAND */
  	emmc_pins_default: emmc-pins-default {
  		mux {
+<<<<<<< HEAD
 @@ -517,11 +531,11 @@
+=======
+@@ -541,11 +555,11 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  };
  
  &sata {

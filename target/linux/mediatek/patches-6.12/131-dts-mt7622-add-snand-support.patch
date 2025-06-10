@@ -1,6 +1,10 @@
 --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+<<<<<<< HEAD
 @@ -534,6 +534,65 @@
+=======
+@@ -558,6 +558,65 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	status = "disabled";
  };
  

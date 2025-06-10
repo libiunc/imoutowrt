@@ -760,6 +760,18 @@ define Device/buffalo_wzr-hp-g450h
 endef
 TARGET_DEVICES += buffalo_wzr-hp-g450h
 
+define Device/buffalo_wzr-450hp2
+  $(Device/buffalo_common)
+  SOC := qca9558
+  DEVICE_MODEL := WZR-450HP2
+  DEVICE_ALT0_VENDOR := Buffalo
+  DEVICE_ALT0_MODEL := WZR-450HP2D
+  BUFFALO_PRODUCT := WZR-450HP2
+  IMAGE_SIZE := 15936k
+  SUPPORTED_DEVICES += wzr-450hp2
+endef
+TARGET_DEVICES += buffalo_wzr-450hp2
+
 define Device/comfast_cf-e110n-v2
   SOC := qca9533
   DEVICE_VENDOR := COMFAST
@@ -1090,6 +1102,7 @@ define Device/dlink_dap-13xx
   IMAGES += factory.bin
   IMAGE/factory.bin := append-kernel | pad-to $$$$(BLOCKSIZE) | \
 	append-rootfs | pad-rootfs | check-size | mkdapimg2 0xE0000
+  DEFAULT := n
 endef
 
 define Device/dlink_dap-1330-a1
@@ -1659,6 +1672,23 @@ define Device/fortinet_fap-221-b
 endef
 TARGET_DEVICES += fortinet_fap-221-b
 
+define Device/fortinet_fap-221-c
+  $(Device/senao_loader_okli)
+  SOC := qca9557
+  DEVICE_VENDOR := Fortinet
+  DEVICE_MODEL := FAP-221-C
+  FACTORY_IMG_NAME := FP221C-9.99-AP-build999-999999-patch99
+  DEVICE_PACKAGES := ath10k-firmware-qca988x-ct kmod-ath10k-ct
+  IMAGE_SIZE := 20480k
+  LOADER_FLASH_OFFS := 0x040000
+  IMAGE/factory.bin := append-kernel | pad-to $$$$(BLOCKSIZE) | \
+        append-rootfs | pad-rootfs | \
+        check-size | pad-to $$$$(IMAGE_SIZE) | \
+        append-loader-okli-uimage $(1) | pad-to 11520k | \
+        gzip-filename $$$$(FACTORY_IMG_NAME)
+endef
+TARGET_DEVICES += fortinet_fap-221-c
+
 define Device/glinet_6408
   $(Device/tplink-8mlzma)
   SOC := ar9331
@@ -2011,6 +2041,16 @@ define Device/librerouter_librerouter-v1
 endef
 TARGET_DEVICES += librerouter_librerouter-v1
 
+define Device/longdata_aps256
+  SOC := ar9344
+  DEVICE_VENDOR := LONGDATA
+  DEVICE_MODEL := APS256
+  DEVICE_PACKAGES := kmod-usb2
+  IMAGE_SIZE := 16192k
+  SUPPORTED_DEVICES += aps256
+endef
+TARGET_DEVICES += longdata_aps256
+
 define Device/meraki_mr12
   SOC := ar7242
   DEVICE_VENDOR := Meraki
@@ -2132,6 +2172,16 @@ define Device/nec_wg1800hp2
   DEVICE_PACKAGES += kmod-ath10k-ct ath10k-firmware-qca988x-ct
 endef
 TARGET_DEVICES += nec_wg1800hp2
+
+define Device/nec_wg2200hp
+  SOC := qca9558
+  DEVICE_MODEL := Aterm WG2200HP
+  IMAGE_SIZE := 16128k
+  NEC_FW_TYPE := H055
+  $(Device/nec-netbsd-aterm)
+  DEVICE_PACKAGES += kmod-ath10k-ct ath10k-firmware-qca9984-ct
+endef
+TARGET_DEVICES += nec_wg2200hp
 
 define Device/nec_wg800hp
   SOC := qca9563
@@ -2933,6 +2983,17 @@ define Device/ruckus_zf7372
 endef
 TARGET_DEVICES += ruckus_zf7372
 
+define Device/ruckus_r500
+  $(Device/ruckus_common)
+  SOC := qca9557
+  DEVICE_MODEL := R500
+  IMAGE_SIZE := 63744k
+  BLOCKSIZE := 256k
+  DEVICE_PACKAGES += kmod-ath10k-ct ath10k-firmware-qca988x-ct \
+		     kmod-i2c-gpio kmod-tpm-i2c-infineon
+endef
+TARGET_DEVICES += ruckus_r500
+
 define Device/samsung_wam250
   SOC := ar9344
   DEVICE_VENDOR := Samsung
@@ -3056,8 +3117,11 @@ define Device/teltonika_rut230-v1
   DEVICE_VENDOR := Teltonika
   DEVICE_MODEL := RUT230
   DEVICE_VARIANT := v1
-  DEVICE_PACKAGES := kmod-usb-chipidea2 kmod-usb-acm kmod-usb-net-qmi-wwan \
-	uqmi -uboot-envtools
+  DEVICE_ALT0_VENDOR := Teltonika
+  DEVICE_ALT0_MODEL := RUT240
+  DEVICE_ALT0_VARIANT := v1
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-chipidea2 kmod-usb-acm \
+	kmod-usb-net-qmi-wwan kmod-usb-serial-option uqmi -uboot-envtools
   IMAGE_SIZE := 15552k
   TPLINK_HWID := 0x32200002
   TPLINK_HWREV := 0x1
@@ -3313,6 +3377,19 @@ define Device/yuncore_xd3200
 endef
 TARGET_DEVICES += yuncore_xd3200
 
+define Device/yuncore_cpe830
+  SOC := qca9533
+  DEVICE_VENDOR := YunCore
+  DEVICE_MODEL := CPE830(D)
+  DEVICE_ALT0_VENDOR = KuWfi
+  DEVICE_ALT0_MODEL = CPE830(D)
+  IMAGE_SIZE := 16000k
+  IMAGES += tftp.bin
+  IMAGE/tftp.bin := $$(IMAGE/sysupgrade.bin) | yuncore-tftp-header-16m
+  DEVICE_PACKAGES := rssileds -swconfig
+endef
+TARGET_DEVICES += yuncore_cpe830
+
 define Device/yuncore_xd4200
   SOC := qca9563
   DEVICE_VENDOR := YunCore
@@ -3343,6 +3420,15 @@ define Device/zbtlink_zbt-wd323
 	kmod-usb-serial-cp210x uqmi
 endef
 TARGET_DEVICES += zbtlink_zbt-wd323
+
+define Device/zte_e8820
+  SOC := qca9563
+  DEVICE_VENDOR := ZTE
+  DEVICE_MODEL := E8820
+  IMAGE_SIZE := 16000k
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ledtrig-usbport kmod-ath10k-ct-smallbuffers ath10k-firmware-qca988x-ct
+endef
+TARGET_DEVICES += zte_e8820
 
 define Device/zyxel_nwa11xx
   $(Device/loader-okli-uimage)

@@ -47,6 +47,7 @@ $(eval $(call KernelPackage,pwm-mediatek-ramips))
 define KernelPackage/sdhci-mt7620
   SUBMENU:=Other modules
   TITLE:=MT7620 SDCI
+  CONFLICTS:=kmod-mmc-mtk
   DEPENDS:=@(TARGET_ramips_mt7620||TARGET_ramips_mt76x8||TARGET_ramips_mt7621) +kmod-mmc
   KCONFIG:= \
 	CONFIG_MTK_MMC \
@@ -151,3 +152,21 @@ define KernelPackage/sound-mt7620/description
 endef
 
 $(eval $(call KernelPackage,sound-mt7620))
+
+
+define KernelPackage/keyboard-sx951x
+  SUBMENU:=Other modules
+  TITLE:=Semtech SX9512/SX9513
+  DEPENDS:=@TARGET_ramips_mt7621 +kmod-input-core
+  KCONFIG:= \
+	CONFIG_KEYBOARD_SX951X \
+	CONFIG_INPUT_KEYBOARD=y
+  FILES:=$(LINUX_DIR)/drivers/input/keyboard/sx951x.ko
+  AUTOLOAD:=$(call AutoProbe,sx951x)
+endef
+
+define KernelPackage/keyboard-sx951x/description
+ Enable support for SX9512/SX9513 capacitive touch controllers
+endef
+
+$(eval $(call KernelPackage,keyboard-sx951x))

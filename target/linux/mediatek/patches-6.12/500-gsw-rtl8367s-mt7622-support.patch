@@ -1,6 +1,10 @@
 --- a/drivers/net/phy/Kconfig
 +++ b/drivers/net/phy/Kconfig
+<<<<<<< HEAD
 @@ -419,6 +419,12 @@ config ROCKCHIP_PHY
+=======
+@@ -431,6 +431,12 @@ config ROCKCHIP_PHY
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	help
  	  Currently supports the integrated Ethernet PHY.
  
@@ -15,8 +19,13 @@
  	select CRC16
 --- a/drivers/net/phy/Makefile
 +++ b/drivers/net/phy/Makefile
+<<<<<<< HEAD
 @@ -102,6 +102,7 @@ obj-$(CONFIG_QSEMI_PHY)		+= qsemi.o
  obj-$(CONFIG_REALTEK_PHY)	+= realtek.o
+=======
+@@ -113,6 +113,7 @@ obj-$(CONFIG_REALTEK_PHY)	+= realtek/
+ obj-y				+= rtl8261n/
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  obj-$(CONFIG_RENESAS_PHY)	+= uPD60620.o
  obj-$(CONFIG_ROCKCHIP_PHY)	+= rockchip.o
 +obj-$(CONFIG_RTL8367S_GSW)	+= rtk/

@@ -9,13 +9,21 @@ Subject: [PATCH] arm64: dts: mt7986: add afe
 
 --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+<<<<<<< HEAD
 @@ -202,6 +202,28 @@
+=======
+@@ -202,6 +202,29 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  			#interrupt-cells = <2>;
  		};
  
 +		afe: audio-controller@11210000 {
 +			compatible = "mediatek,mt7986-afe";
 +			reg = <0 0x11210000 0 0x9000>;
+<<<<<<< HEAD
+=======
++			#sound-dai-cells = <0>;
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 +			interrupts = <GIC_SPI 106 IRQ_TYPE_LEVEL_HIGH>;
 +			clocks = <&infracfg CLK_INFRA_AUD_BUS_CK>,
 +				 <&infracfg CLK_INFRA_AUD_26M_CK>,

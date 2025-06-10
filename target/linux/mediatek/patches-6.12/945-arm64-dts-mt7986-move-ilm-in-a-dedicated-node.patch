@@ -34,7 +34,11 @@ Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
  		wo_data: wo-data@4fd80000 {
  			reg = <0 0x4fd80000 0 0x240000>;
  			no-map;
+<<<<<<< HEAD
 @@ -525,11 +515,10 @@
+=======
+@@ -526,11 +516,10 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  			reg = <0 0x15010000 0 0x1000>;
  			interrupt-parent = <&gic>;
  			interrupts = <GIC_SPI 205 IRQ_TYPE_LEVEL_HIGH>;
@@ -49,7 +53,11 @@ Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
  			mediatek,wo-cpuboot = <&wo_cpuboot>;
  		};
  
+<<<<<<< HEAD
 @@ -539,11 +528,10 @@
+=======
+@@ -540,11 +529,10 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  			reg = <0 0x15011000 0 0x1000>;
  			interrupt-parent = <&gic>;
  			interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_HIGH>;
@@ -64,7 +72,11 @@ Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
  			mediatek,wo-cpuboot = <&wo_cpuboot>;
  		};
  
+<<<<<<< HEAD
 @@ -602,6 +590,16 @@
+=======
+@@ -603,6 +591,16 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  			interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH>;
  		};
  

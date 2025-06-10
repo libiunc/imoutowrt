@@ -1,6 +1,10 @@
 --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+<<<<<<< HEAD
 @@ -588,6 +588,10 @@
+=======
+@@ -599,6 +599,10 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	status = "okay";
  };
  

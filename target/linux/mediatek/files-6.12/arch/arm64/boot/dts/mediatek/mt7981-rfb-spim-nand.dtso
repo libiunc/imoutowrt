@@ -17,7 +17,11 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
+<<<<<<< HEAD
 			spi_nand: spi_nand@0 {
+=======
+			spi_nand: spi_nand@1 {
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 				#address-cells = <1>;
 				#size-cells = <1>;
 				compatible = "spi-nand";

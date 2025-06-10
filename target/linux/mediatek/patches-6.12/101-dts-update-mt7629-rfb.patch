@@ -40,12 +40,17 @@
  			};
  		};
  	};
+<<<<<<< HEAD
 @@ -273,3 +282,17 @@
+=======
+@@ -273,3 +282,19 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	pinctrl-0 = <&watchdog_pins>;
  	status = "okay";
  };
 +
 +&factory {
+<<<<<<< HEAD
 +	compatible = "nvmem-cells";
 +	#address-cells = <1>;
 +	#size-cells = <1>;
@@ -56,5 +61,19 @@
 +
 +	macaddr_factory_2a: macaddr@2a {
 +		reg = <0x2a 0x6>;
+=======
++	nvmem-layout {
++		compatible = "fixed-layout";
++		#address-cells = <1>;
++		#size-cells = <1>;
++
++		macaddr_factory_24: macaddr@24 {
++			reg = <0x24 0x6>;
++		};
++
++		macaddr_factory_2a: macaddr@2a {
++			reg = <0x2a 0x6>;
++		};
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 +	};
 +};

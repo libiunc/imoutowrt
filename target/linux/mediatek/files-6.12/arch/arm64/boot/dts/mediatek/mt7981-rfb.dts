@@ -5,7 +5,11 @@
  */
 
 /dts-v1/;
+<<<<<<< HEAD
 #include "mt7981.dtsi"
+=======
+#include "mt7981b.dtsi"
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 
 / {
 	model = "MediaTek MT7981 RFB";

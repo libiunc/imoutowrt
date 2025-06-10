@@ -1,6 +1,10 @@
 --- a/drivers/pci/controller/pcie-mediatek-gen3.c
 +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+<<<<<<< HEAD
 @@ -375,7 +375,13 @@ static int mtk_pcie_startup_port(struct
+=======
+@@ -416,7 +416,13 @@ static int mtk_pcie_startup_port(struct
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	msleep(100);
  
  	/* De-assert reset signals */

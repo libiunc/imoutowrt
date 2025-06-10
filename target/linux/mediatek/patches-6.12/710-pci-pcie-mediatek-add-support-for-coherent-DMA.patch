@@ -61,7 +61,11 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  struct mtk_pcie_port;
  
  /**
+<<<<<<< HEAD
 @@ -1060,6 +1066,27 @@ static int mtk_pcie_setup(struct mtk_pci
+=======
+@@ -1052,6 +1058,27 @@ static int mtk_pcie_setup(struct mtk_pci
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	struct mtk_pcie_port *port, *tmp;
  	int err, slot;
  

@@ -217,6 +217,15 @@ define Device/comfast_cf-wr800n
 endef
 TARGET_DEVICES += comfast_cf-wr800n
 
+define Device/devolo_rac
+  SOC := mt7620a
+  IMAGE_SIZE := 7872k
+  DEVICE_VENDOR := devolo
+  DEVICE_MODEL := WiFi Repeater ac
+  DEVICE_PACKAGES := kmod-mt76x2 kmod-phy-realtek
+endef
+TARGET_DEVICES += devolo_rac
+
 define Device/dlink_dch-m225
   $(Device/seama)
   SOC := mt7620a
@@ -254,6 +263,7 @@ define Device/dlink_dir-806a-b1
   IMAGES += factory.bin
   IMAGE/factory.bin := append-kernel | append-rootfs | pad-rootfs | check-size | \
 	sign-dlink-ru cef285a2e29e40b2baab31277d44298b
+  DEFAULT := n
 endef
 TARGET_DEVICES += dlink_dir-806a-b1
 
@@ -614,6 +624,18 @@ define Device/hnet_c108
 endef
 TARGET_DEVICES += hnet_c108
 
+define Device/hongdian_h8922-v30
+  SOC := mt7620a
+  IMAGE_SIZE := 15808k
+  DEVICE_VENDOR := Hongdian
+  DEVICE_MODEL := H8922
+  DEVICE_VARIANT := v30
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-net-qmi-wwan kmod-usb-serial-option uqmi uboot-envtools
+  IMAGES += rootfs.bin
+  IMAGE/rootfs.bin := append-rootfs | check-size 10560k
+endef
+TARGET_DEVICES += hongdian_h8922-v30
+
 define Device/humax_e2
   SOC := mt7620a
   IMAGE_SIZE := 7744k
@@ -793,6 +815,7 @@ define Device/linksys_e1700
   DEVICE_VENDOR := Linksys
   DEVICE_MODEL := E1700
   SUPPORTED_DEVICES += e1700
+  DEFAULT := n
 endef
 TARGET_DEVICES += linksys_e1700
 
@@ -929,6 +952,7 @@ define Device/netgear_wn3100rp-v2
   DEVICE_VENDOR := NETGEAR
   DEVICE_MODEL := WN3100RP
   DEVICE_VARIANT := v2
+  DEFAULT := n
 endef
 TARGET_DEVICES += netgear_wn3100rp-v2
 
@@ -1340,6 +1364,16 @@ define Device/trendnet_tew-810dr
 endef
 TARGET_DEVICES += trendnet_tew-810dr
 
+define Device/trendnet_tha103ac
+  SOC := mt7620a
+  DEVICE_PACKAGES := kmod-mt76x0e rssileds
+  DEVICE_VENDOR := TRENDnet
+  DEVICE_MODEL := THA-103AC
+  IMAGE_SIZE := 7872k
+  SUPPORTED_DEVICES += mt7620a_mt7610e
+endef
+TARGET_DEVICES += trendnet_tha103ac
+
 define Device/vonets_var11n-300
   SOC := mt7620n
   IMAGE_SIZE := 3776k
@@ -1598,6 +1632,7 @@ define Device/zyxel_keenetic-lite-iii-a
   IMAGES += factory.bin
   IMAGE/factory.bin := $$(sysupgrade_bin) | pad-to 64k | check-size | \
 		zyimage -d 2102018 -v "ZyXEL Keenetic Lite III"
+  DEFAULT := n
 endef
 TARGET_DEVICES += zyxel_keenetic-lite-iii-a
 

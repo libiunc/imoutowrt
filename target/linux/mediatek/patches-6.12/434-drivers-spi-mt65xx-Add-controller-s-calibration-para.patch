@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 From d278c7a0bf730318a7ccf8d0a8b434c813e23fd0 Mon Sep 17 00:00:00 2001
+=======
+From 655dfc90d438a8e223317f197b888a92de3df3a1 Mon Sep 17 00:00:00 2001
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 Date: Thu, 23 Jun 2022 18:39:03 +0800
 Subject: [PATCH 4/6] drivers: spi-mt65xx: Add controller's calibration
@@ -11,14 +15,23 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
 
 --- a/drivers/spi/spi-mt65xx.c
 +++ b/drivers/spi/spi-mt65xx.c
+<<<<<<< HEAD
 @@ -834,6 +834,21 @@ static irqreturn_t mtk_spi_interrupt(int
  	return IRQ_HANDLED;
+=======
+@@ -842,6 +842,21 @@ static irqreturn_t mtk_spi_interrupt(int
+ 	return IRQ_WAKE_THREAD;
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  }
  
 +static int mtk_spi_append_caldata(struct spi_controller *ctlr)
 +{
 +	struct spi_cal_target *cal_target = kmalloc(sizeof(*cal_target), GFP_KERNEL);
+<<<<<<< HEAD
 +	struct mtk_spi *mdata = spi_master_get_devdata(ctlr);
+=======
++	struct mtk_spi *mdata = spi_controller_get_devdata(ctlr);
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 +
 +	cal_target->cal_item = &mdata->get_tick_dly;
 +	cal_target->cal_min = 0;
@@ -33,6 +46,7 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  static int mtk_spi_mem_adjust_op_size(struct spi_mem *mem,
  				      struct spi_mem_op *op)
  {
+<<<<<<< HEAD
 @@ -1124,6 +1139,7 @@ static int mtk_spi_probe(struct platform
  	master->setup = mtk_spi_setup;
  	master->set_cs_timing = mtk_spi_set_hw_cs_timing;
@@ -41,3 +55,13 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  
  	mdata = spi_master_get_devdata(master);
  	mdata->dev_comp = device_get_match_data(dev);
+=======
+@@ -1132,6 +1147,7 @@ static int mtk_spi_probe(struct platform
+ 	host->setup = mtk_spi_setup;
+ 	host->set_cs_timing = mtk_spi_set_hw_cs_timing;
+ 	host->use_gpio_descriptors = true;
++	host->append_caldata = mtk_spi_append_caldata;
+ 
+ 	mdata = spi_controller_get_devdata(host);
+ 
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78

@@ -1,6 +1,10 @@
 --- a/drivers/mtd/nand/spi/core.c
 +++ b/drivers/mtd/nand/spi/core.c
+<<<<<<< HEAD
 @@ -724,7 +724,7 @@ static int spinand_mtd_write(struct mtd_
+=======
+@@ -893,7 +893,7 @@ static int spinand_mtd_write(struct mtd_
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  static bool spinand_isbad(struct nand_device *nand, const struct nand_pos *pos)
  {
  	struct spinand_device *spinand = nand_to_spinand(nand);
@@ -9,7 +13,11 @@
  	struct nand_page_io_req req = {
  		.pos = *pos,
  		.ooblen = sizeof(marker),
+<<<<<<< HEAD
 @@ -735,7 +735,7 @@ static bool spinand_isbad(struct nand_de
+=======
+@@ -904,7 +904,7 @@ static bool spinand_isbad(struct nand_de
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  
  	spinand_select_target(spinand, pos->target);
  	spinand_read_page(spinand, &req);

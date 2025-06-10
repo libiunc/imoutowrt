@@ -1,6 +1,10 @@
 --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+<<<<<<< HEAD
 @@ -575,7 +575,7 @@
+=======
+@@ -599,7 +599,7 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  				reg = <0x140000 0x0080000>;
  			};
  
@@ -9,7 +13,11 @@
  				label = "Factory";
  				reg = <0x1c0000 0x0100000>;
  			};
+<<<<<<< HEAD
 @@ -636,5 +636,6 @@
+=======
+@@ -660,5 +660,6 @@
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  &wmac {
  	pinctrl-names = "default";
  	pinctrl-0 = <&wmac_pins>;

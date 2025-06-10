@@ -19,7 +19,7 @@ Signed-off-by: Weijie Gao <weijie.gao@mediatek.com>
 
 --- a/env/Kconfig
 +++ b/env/Kconfig
-@@ -61,7 +61,7 @@ config ENV_IS_DEFAULT
+@@ -74,7 +74,7 @@ config ENV_IS_DEFAULT
  		     !ENV_IS_IN_MMC && !ENV_IS_IN_NAND && \
  		     !ENV_IS_IN_NVRAM && !ENV_IS_IN_ONENAND && \
  		     !ENV_IS_IN_REMOTE && !ENV_IS_IN_SPI_FLASH && \
@@ -28,7 +28,7 @@ Signed-off-by: Weijie Gao <weijie.gao@mediatek.com>
  	select ENV_IS_NOWHERE
  
  config ENV_IS_NOWHERE
-@@ -254,6 +254,27 @@ config ENV_IS_IN_MMC
+@@ -267,6 +267,27 @@ config ENV_IS_IN_MMC
  	  offset: "u-boot,mmc-env-offset", "u-boot,mmc-env-offset-redundant".
  	  CONFIG_ENV_OFFSET and CONFIG_ENV_OFFSET_REDUND are not used.
  
@@ -56,7 +56,7 @@ Signed-off-by: Weijie Gao <weijie.gao@mediatek.com>
  config ENV_IS_IN_NAND
  	bool "Environment in a NAND device"
  	depends on !CHAIN_OF_TRUST
-@@ -561,10 +582,16 @@ config ENV_ADDR_REDUND
+@@ -574,10 +595,16 @@ config ENV_ADDR_REDUND
  	  Offset from the start of the device (or partition) of the redundant
  	  environment location.
  
@@ -74,7 +74,7 @@ Signed-off-by: Weijie Gao <weijie.gao@mediatek.com>
  	default 0x3f8000 if ARCH_ROCKCHIP && ENV_IS_IN_MMC
  	default 0x140000 if ARCH_ROCKCHIP && ENV_IS_IN_SPI_FLASH
  	default 0xF0000 if ARCH_SUNXI
-@@ -622,6 +649,12 @@ config ENV_SECT_SIZE
+@@ -635,6 +662,12 @@ config ENV_SECT_SIZE
  	help
  	  Size of the sector containing the environment.
  
@@ -89,14 +89,14 @@ Signed-off-by: Weijie Gao <weijie.gao@mediatek.com>
  	depends on ENV_IS_IN_UBI
 --- a/env/Makefile
 +++ b/env/Makefile
-@@ -24,6 +24,7 @@ obj-$(CONFIG_$(SPL_TPL_)ENV_IS_NOWHERE)
- obj-$(CONFIG_$(SPL_TPL_)ENV_IS_IN_MMC) += mmc.o
- obj-$(CONFIG_$(SPL_TPL_)ENV_IS_IN_FAT) += fat.o
- obj-$(CONFIG_$(SPL_TPL_)ENV_IS_IN_EXT4) += ext4.o
-+obj-$(CONFIG_$(SPL_TPL_)ENV_IS_IN_MTD) += mtd.o
- obj-$(CONFIG_$(SPL_TPL_)ENV_IS_IN_NAND) += nand.o
- obj-$(CONFIG_$(SPL_TPL_)ENV_IS_IN_SPI_FLASH) += sf.o
- obj-$(CONFIG_$(SPL_TPL_)ENV_IS_IN_FLASH) += flash.o
+@@ -24,6 +24,7 @@ obj-$(CONFIG_$(PHASE_)ENV_IS_NOWHERE) +=
+ obj-$(CONFIG_$(PHASE_)ENV_IS_IN_MMC) += mmc.o
+ obj-$(CONFIG_$(PHASE_)ENV_IS_IN_FAT) += fat.o
+ obj-$(CONFIG_$(PHASE_)ENV_IS_IN_EXT4) += ext4.o
++obj-$(CONFIG_$(PHASE_)ENV_IS_IN_MTD) += mtd.o
+ obj-$(CONFIG_$(PHASE_)ENV_IS_IN_NAND) += nand.o
+ obj-$(CONFIG_$(PHASE_)ENV_IS_IN_SPI_FLASH) += sf.o
+ obj-$(CONFIG_$(PHASE_)ENV_IS_IN_FLASH) += flash.o
 --- a/env/env.c
 +++ b/env/env.c
 @@ -46,6 +46,9 @@ static enum env_location env_locations[]
@@ -370,7 +370,7 @@ Signed-off-by: Weijie Gao <weijie.gao@mediatek.com>
 +};
 --- a/include/env_internal.h
 +++ b/include/env_internal.h
-@@ -107,6 +107,7 @@ enum env_location {
+@@ -108,6 +108,7 @@ enum env_location {
  	ENVL_FAT,
  	ENVL_FLASH,
  	ENVL_MMC,

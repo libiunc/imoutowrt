@@ -1026,7 +1026,7 @@ endef
 $(eval $(call KernelPackage,bpf-test))
 
 
-SCHED_MODULES_EXTRA = sch_codel sch_gred sch_multiq sch_sfq sch_teql sch_fq act_pedit act_simple act_skbmod act_csum em_cmp em_nbyte em_meta em_text
+SCHED_MODULES_EXTRA = sch_codel sch_gred sch_multiq sch_sfq sch_teql sch_fq sch_ets act_pedit act_simple act_skbmod act_csum em_cmp em_nbyte em_meta em_text
 SCHED_FILES_EXTRA = $(foreach mod,$(SCHED_MODULES_EXTRA),$(LINUX_DIR)/net/sched/$(mod).ko)
 
 define KernelPackage/sched
@@ -1040,6 +1040,7 @@ define KernelPackage/sched
 	CONFIG_NET_SCH_SFQ \
 	CONFIG_NET_SCH_TEQL \
 	CONFIG_NET_SCH_FQ \
+	CONFIG_NET_SCH_ETS \
 	CONFIG_NET_ACT_PEDIT \
 	CONFIG_NET_ACT_SIMP \
 	CONFIG_NET_ACT_SKBMOD \
@@ -1375,6 +1376,7 @@ $(eval $(call KernelPackage,mpls))
 define KernelPackage/9pnet
   SUBMENU:=$(NETWORK_SUPPORT_MENU)
   TITLE:=Plan 9 Resource Sharing Support (9P2000)
+  DEPENDS:=+!LINUX_6_6:kmod-fs-netfs
   KCONFIG:= \
 	CONFIG_NET_9P \
 	CONFIG_NET_9P_DEBUG=n \
@@ -1648,3 +1650,23 @@ define KernelPackage/qrtr-mhi/description
 endef
 
 $(eval $(call KernelPackage,qrtr-mhi))
+
+define KernelPackage/unix-diag
+  SUBMENU:=$(NETWORK_SUPPORT_MENU)
+  TITLE:=UNIX socket monitoring interface
+  KCONFIG:=CONFIG_UNIX_DIAG
+  FILES:= $(LINUX_DIR)/net/unix/unix_diag.ko
+  AUTOLOAD:=$(call AutoProbe,unix_diag)
+endef
+
+$(eval $(call KernelPackage,unix-diag))
+
+define KernelPackage/packet-diag
+  SUBMENU:=$(NETWORK_SUPPORT_MENU)
+  TITLE:=Packet sockets monitoring interface
+  KCONFIG:=CONFIG_PACKET_DIAG
+  FILES:= $(LINUX_DIR)/net/packet/af_packet_diag.ko
+  AUTOLOAD:=$(call AutoProbe,af_packet_diag)
+endef
+
+$(eval $(call KernelPackage,packet-diag))

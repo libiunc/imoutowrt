@@ -10,7 +10,11 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 
 --- a/drivers/pci/controller/pcie-mediatek.c
 +++ b/drivers/pci/controller/pcie-mediatek.c
+<<<<<<< HEAD
 @@ -607,9 +607,9 @@ static void mtk_pcie_intr_handler(struct
+=======
+@@ -599,9 +599,9 @@ static void mtk_pcie_intr_handler(struct
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	if (status & INTX_MASK) {
  		for_each_set_bit_from(bit, &status, PCI_NUM_INTX + INTX_SHIFT) {
  			/* Clear the INTx */

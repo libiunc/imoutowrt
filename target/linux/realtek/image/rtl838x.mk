@@ -59,6 +59,13 @@ define Device/d-link_dgs-1210-20
 endef
 TARGET_DEVICES += d-link_dgs-1210-20
 
+define Device/d-link_dgs-1210-26
+  $(Device/d-link_dgs-1210)
+  SOC := rtl8382
+  DEVICE_MODEL := DGS-1210-26
+endef
+TARGET_DEVICES += d-link_dgs-1210-26
+
 define Device/d-link_dgs-1210-28
   $(Device/d-link_dgs-1210)
   SOC := rtl8382
@@ -84,22 +91,25 @@ define Device/d-link_dgs-1210-28p-f
 endef
 TARGET_DEVICES += d-link_dgs-1210-28p-f
 
-# The "IMG-" uImage name allows flashing the iniramfs from the vendor Web UI.
-# Avoided for sysupgrade, as the vendor FW would do an incomplete flash.
-define Device/engenius_ews2910p
+define Device/engenius_ews2910p-v1
+  $(Device/engenius_ews2910p)
   SOC := rtl8380
-  IMAGE_SIZE := 8192k
-  DEVICE_VENDOR := EnGenius
   DEVICE_MODEL := EWS2910P
+  DEVICE_VARIANT := v1
   DEVICE_PACKAGES += realtek-poe
   UIMAGE_MAGIC := 0x03802910
-  KERNEL_INITRAMFS := \
-	kernel-bin | \
-	append-dtb | \
-	libdeflate-gzip | \
-	uImage gzip -n 'IMG-0.00.00-c0.0.00'
+  SUPPORTED_DEVICES += engenius,ews2910p
 endef
-TARGET_DEVICES += engenius_ews2910p
+TARGET_DEVICES += engenius_ews2910p-v1
+
+define Device/engenius_ews2910p-v3
+  $(Device/engenius_ews2910p)
+  SOC := rtl8380
+  DEVICE_MODEL := EWS2910P
+  DEVICE_VARIANT := v3
+  UIMAGE_MAGIC := 0x03010500
+endef
+TARGET_DEVICES += engenius_ews2910p-v3
 
 define Device/hpe_1920-8g
   $(Device/hpe_1920)
@@ -120,11 +130,12 @@ TARGET_DEVICES += hpe_1920-8g-poe-65w
 
 define Device/hpe_1920-8g-poe-180w
   $(Device/hpe_1920)
+  $(Device/hwmon-fan-migration)
   SOC := rtl8380
   DEVICE_MODEL := 1920-8G-PoE+ 180W (JG922A)
-  DEVICE_PACKAGES += realtek-poe
+  DEVICE_PACKAGES += realtek-poe kmod-hwmon-gpiofan
   H3C_DEVICE_ID := 0x00010025
-  SUPPORTED_DEVICES += hpe_1920-8g-poe
+  SUPPORTED_DEVICES += hpe,1920-8g-poe
 endef
 TARGET_DEVICES += hpe_1920-8g-poe-180w
 
@@ -143,6 +154,26 @@ define Device/hpe_1920-24g
   H3C_DEVICE_ID := 0x00010027
 endef
 TARGET_DEVICES += hpe_1920-24g
+
+define Device/hpe_1920-24g-poe-180w
+  $(Device/hpe_1920)
+  $(Device/hwmon-fan-migration)
+  SOC := rtl8382
+  DEVICE_MODEL := 1920-24G-PoE+ 180W (JG925A)
+  DEVICE_PACKAGES += realtek-poe kmod-hwmon-gpiofan
+  H3C_DEVICE_ID := 0x00010028
+endef
+TARGET_DEVICES += hpe_1920-24g-poe-180w
+
+define Device/hpe_1920-24g-poe-370w
+  $(Device/hpe_1920)
+  $(Device/hwmon-fan-migration)
+  SOC := rtl8382
+  DEVICE_MODEL := 1920-24G-PoE+ 370W (JG926A)
+  DEVICE_PACKAGES += realtek-poe kmod-hwmon-gpiofan
+  H3C_DEVICE_ID := 0x00010029
+endef
+TARGET_DEVICES += hpe_1920-24g-poe-370w
 
 define Device/inaba_aml2-17gp
   SOC := rtl8382
@@ -339,17 +370,25 @@ define Device/zyxel_gs1900-16
 endef
 TARGET_DEVICES += zyxel_gs1900-16
 
-define Device/zyxel_gs1900-8
+define Device/zyxel_gs1900-8-v1
   $(Device/zyxel_gs1900)
   SOC := rtl8380
   DEVICE_MODEL := GS1900-8
   DEVICE_VARIANT := v1
-  DEVICE_ALT0_VENDOR := Zyxel
-  DEVICE_ALT0_MODEL := GS1900-8
-  DEVICE_ALT0_VARIANT := v2
   ZYXEL_VERS := AAHH
+  SUPPORTED_DEVICES += zyxel,gs1900-8
 endef
-TARGET_DEVICES += zyxel_gs1900-8
+TARGET_DEVICES += zyxel_gs1900-8-v1
+
+define Device/zyxel_gs1900-8-v2
+  $(Device/zyxel_gs1900)
+  SOC := rtl8380
+  DEVICE_MODEL := GS1900-8
+  DEVICE_VARIANT := v2
+  ZYXEL_VERS := AAHH
+  SUPPORTED_DEVICES += zyxel,gs1900-8
+endef
+TARGET_DEVICES += zyxel_gs1900-8-v2
 
 define Device/zyxel_gs1900-8hp-v1
   $(Device/zyxel_gs1900)

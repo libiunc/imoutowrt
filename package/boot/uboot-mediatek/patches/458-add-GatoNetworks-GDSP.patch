@@ -44,7 +44,7 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +		reset {
 +			label = "reset";
 +			linux,code = <KEY_RESTART>;
-+			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 1 GPIO_ACTIVE_LOW>;
 +		};
 +	};
 +
@@ -53,47 +53,47 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +
 +		sim1 {
 +			label = "sim1";
-+			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 13 GPIO_ACTIVE_LOW>;
 +		};
 +
 +		sim2 {
 +			label = "sim2";
-+			gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 0 GPIO_ACTIVE_LOW>;
 +		};
 +
 +		sg1 {
 +			label = "sg1";
-+			gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 10 GPIO_ACTIVE_LOW>;
 +		};
 +
 +		sg2 {
 +			label = "sg2";
-+			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 11 GPIO_ACTIVE_LOW>;
 +		};
 +
 +		sg3 {
 +			label = "sg3";
-+			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
 +		};
 +
 +		sg4 {
 +			label = "sg4";
-+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 7 GPIO_ACTIVE_LOW>;
 +		};
 +
 +		sg5 {
 +			label = "sg5";
-+			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 8 GPIO_ACTIVE_LOW>;
 +		};
 +
 +		sg6 {
 +			label = "sg6";
-+			gpios = <&gpio 9 GPIO_ACTIVE_LOW>;
++			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
 +		};
 +	};
 +	gpio-watchdog {
 +		compatible = "linux,wdt-gpio";
-+		gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
++		gpios = <&pio 6 GPIO_ACTIVE_LOW>;
 +		hw_algo = "toggle";
 +		hw_margin_ms = <25000>;
 +		always-running;
@@ -106,7 +106,7 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +	mediatek,gmac-id = <0>;
 +	phy-mode = "2500base-x";
 +	mediatek,switch = "mt7531";
-+	reset-gpios = <&gpio 39 GPIO_ACTIVE_HIGH>;
++	reset-gpios = <&pio 39 GPIO_ACTIVE_HIGH>;
 +
 +	fixed-link {
 +		speed = <2500>;
@@ -166,7 +166,7 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +	};
 +};
 +
-+&pinctrl {
++&pio {
 +	uart1_pins: uart1-pins {
 +		mux {
 +			function = "uart";
@@ -218,7 +218,7 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +};
 --- /dev/null
 +++ b/configs/mt7981_gatonetworks_gdsp_defconfig
-@@ -0,0 +1,144 @@
+@@ -0,0 +1,142 @@
 +CONFIG_ARM=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
 +CONFIG_POSITION_INDEPENDENT=y
@@ -231,10 +231,10 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +CONFIG_DEFAULT_DEVICE_TREE="mt7981-gatonetworks_gdsp"
 +CONFIG_OF_LIBFDT_OVERLAY=y
 +CONFIG_TARGET_MT7981=y
++CONFIG_SYS_LOAD_ADDR=0x46000000
 +CONFIG_WATCHDOG_TIMEOUT_MSECS=25000
 +CONFIG_DEBUG_UART_BASE=0x11002000
 +CONFIG_DEBUG_UART_CLOCK=40000000
-+CONFIG_SYS_LOAD_ADDR=0x46000000
 +CONFIG_DEBUG_UART=y
 +CONFIG_FIT=y
 +CONFIG_SPI_BOOT=y
@@ -281,15 +281,15 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +CONFIG_CMD_CAT=y
 +CONFIG_CMD_SETEXPR_FMT=y
 +CONFIG_CMD_XXD=y
-+CONFIG_CMD_DHCP=y
 +CONFIG_CMD_TFTPPUT=y
 +CONFIG_CMD_TFTPSRV=y
 +CONFIG_CMD_RARP=y
-+CONFIG_CMD_PING=y
 +CONFIG_CMD_CDP=y
 +CONFIG_CMD_SNTP=y
-+CONFIG_CMD_DNS=y
 +CONFIG_CMD_LINK_LOCAL=y
++CONFIG_CMD_DHCP=y
++CONFIG_CMD_DNS=y
++CONFIG_CMD_PING=y
 +CONFIG_CMD_PXE=y
 +CONFIG_CMD_CACHE=y
 +# CONFIG_CMD_EFICONFIG is not set
@@ -307,13 +307,11 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +CONFIG_ENV_SIZE_REDUND=0x0
 +CONFIG_SYS_RELOC_GD_ENV_ADDR=y
 +CONFIG_USE_DEFAULT_ENV_FILE=y
-+CONFIG_DEFAULT_ENV_FILE="gatonetworks_gdsp_env"
++CONFIG_DEFAULT_ENV_FILE="defenvs/gatonetworks_gdsp_env"
 +CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
 +CONFIG_VERSION_VARIABLE=y
-+CONFIG_NET_RANDOM_ETHADDR=y
 +CONFIG_NETCONSOLE=y
-+CONFIG_REGMAP=y
-+CONFIG_SYSCON=y
++CONFIG_NET_RANDOM_ETHADDR=y
 +CONFIG_BUTTON=y
 +CONFIG_BUTTON_GPIO=y
 +CONFIG_CLK=y
@@ -350,6 +348,7 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +CONFIG_DM_PWM=y
 +CONFIG_PWM_MTK=y
 +CONFIG_DM_SERIAL=y
++CONFIG_SERIAL_RX_BUFFER=y
 +CONFIG_MTK_SERIAL=y
 +CONFIG_SPI=y
 +CONFIG_DM_SPI=y
@@ -362,9 +361,8 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +CONFIG_WDT_GPIO=y
 +CONFIG_UBIFS_SILENCE_MSG=y
 +CONFIG_HEXDUMP=y
-+CONFIG_LMB_MAX_REGIONS=64
 --- /dev/null
-+++ b/gatonetworks_gdsp_env
++++ b/defenvs/gatonetworks_gdsp_env
 @@ -0,0 +1,38 @@
 +load_factory_data=if env exists factory_data_present ; then else mtd read Factory $loadaddr 0x0 0x1000 ; setenv factory_data_present 1 ; fi
 +lan_mac_factory=run load_factory_data ; setexpr macoffs $loadaddr + 0x2a ; env readmem -b lan_mac $macoffs 0x6 ; setenv lan_mac_factory ; setenv macoffs
@@ -378,8 +376,8 @@ Signed-off-by: Enrico Mioso <mrkiko.rs@gmail.com>
 +loadaddr=0x46000000
 +bootcmd=run boot_nor
 +bootdelay=0
-+bootfile=openwrt-mediatek-filogic-gatonetworks_gdsp-initramfs-kernel.bin
-+bootfile_upg=openwrt-mediatek-filogic-gatonetworks_gdsp-squashfs-sysupgrade.bin
++bootfile=immortalwrt-mediatek-filogic-gatonetworks_gdsp-initramfs-kernel.bin
++bootfile_upg=immortalwrt-mediatek-filogic-gatonetworks_gdsp-squashfs-sysupgrade.bin
 +bootmenu_confirm_return=askenv - Press ENTER to return to menu ; bootmenu 60
 +bootmenu_default=0
 +bootmenu_delay=0

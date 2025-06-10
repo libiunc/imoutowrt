@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 From bfd3acc428085742d754a6d328d1a93ebf9451df Mon Sep 17 00:00:00 2001
+=======
+From bfa7cf42e610d820b935b4805aa80484d591cb1f Mon Sep 17 00:00:00 2001
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 Date: Thu, 23 Jun 2022 18:29:51 +0800
 Subject: [PATCH 1/6] drivers: spi-mt65xx: Move chip_config to driver's private
@@ -6,22 +10,38 @@ Subject: [PATCH 1/6] drivers: spi-mt65xx: Move chip_config to driver's private
 
 Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
 ---
+<<<<<<< HEAD
  drivers/spi/spi-mt65xx.c                 | 29 +++++++++---------------
  include/linux/platform_data/spi-mt65xx.h | 17 --------------
  2 files changed, 11 insertions(+), 35 deletions(-)
+=======
+ drivers/spi/spi-mt65xx.c                 | 28 ++++++++++--------------
+ include/linux/platform_data/spi-mt65xx.h | 17 --------------
+ 2 files changed, 11 insertions(+), 34 deletions(-)
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  delete mode 100644 include/linux/platform_data/spi-mt65xx.h
 
 --- a/drivers/spi/spi-mt65xx.c
 +++ b/drivers/spi/spi-mt65xx.c
+<<<<<<< HEAD
 @@ -14,7 +14,6 @@
  #include <linux/of.h>
  #include <linux/gpio/consumer.h>
+=======
+@@ -15,7 +15,6 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/pinctrl/consumer.h>
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  #include <linux/platform_device.h>
 -#include <linux/platform_data/spi-mt65xx.h>
  #include <linux/pm_runtime.h>
  #include <linux/spi/spi.h>
  #include <linux/spi/spi-mem.h>
+<<<<<<< HEAD
 @@ -171,6 +170,8 @@ struct mtk_spi {
+=======
+@@ -172,6 +171,8 @@ struct mtk_spi {
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	struct device *dev;
  	dma_addr_t tx_dma;
  	dma_addr_t rx_dma;
@@ -30,7 +50,11 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  };
  
  static const struct mtk_spi_compatible mtk_common_compat;
+<<<<<<< HEAD
 @@ -216,15 +217,6 @@ static const struct mtk_spi_compatible m
+=======
+@@ -217,15 +218,6 @@ static const struct mtk_spi_compatible m
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  	.no_need_unprepare = true,
  };
  
@@ -46,15 +70,26 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  static const struct of_device_id mtk_spi_of_match[] = {
  	{ .compatible = "mediatek,spi-ipm",
  		.data = (void *)&mtk_ipm_compat,
+<<<<<<< HEAD
 @@ -352,7 +344,6 @@ static int mtk_spi_hw_init(struct spi_ma
+=======
+@@ -353,7 +345,6 @@ static int mtk_spi_hw_init(struct spi_co
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  {
  	u16 cpha, cpol;
  	u32 reg_val;
 -	struct mtk_chip_config *chip_config = spi->controller_data;
+<<<<<<< HEAD
  	struct mtk_spi *mdata = spi_master_get_devdata(master);
  
  	cpha = spi->mode & SPI_CPHA ? 1 : 0;
 @@ -402,7 +393,7 @@ static int mtk_spi_hw_init(struct spi_ma
+=======
+ 	struct mtk_spi *mdata = spi_controller_get_devdata(host);
+ 
+ 	cpha = spi->mode & SPI_CPHA ? 1 : 0;
+@@ -403,7 +394,7 @@ static int mtk_spi_hw_init(struct spi_co
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  		else
  			reg_val &= ~SPI_CMD_CS_POL;
  
@@ -63,7 +98,11 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  			reg_val |= SPI_CMD_SAMPLE_SEL;
  		else
  			reg_val &= ~SPI_CMD_SAMPLE_SEL;
+<<<<<<< HEAD
 @@ -429,20 +420,20 @@ static int mtk_spi_hw_init(struct spi_ma
+=======
+@@ -430,20 +421,20 @@ static int mtk_spi_hw_init(struct spi_co
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  		if (mdata->dev_comp->ipm_design) {
  			reg_val = readl(mdata->base + SPI_CMD_REG);
  			reg_val &= ~SPI_CMD_IPM_GET_TICKDLY_MASK;
@@ -87,9 +126,15 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  			    << SPI_CFG1_GET_TICK_DLY_OFFSET_V1);
  		writel(reg_val, mdata->base + SPI_CFG1_REG);
  	}
+<<<<<<< HEAD
 @@ -732,9 +723,6 @@ static int mtk_spi_setup(struct spi_devi
  {
  	struct mtk_spi *mdata = spi_master_get_devdata(spi->master);
+=======
+@@ -733,9 +724,6 @@ static int mtk_spi_setup(struct spi_devi
+ {
+ 	struct mtk_spi *mdata = spi_controller_get_devdata(spi->controller);
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
  
 -	if (!spi->controller_data)
 -		spi->controller_data = (void *)&mtk_default_chip_info;
@@ -97,17 +142,31 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  	if (mdata->dev_comp->need_pad_sel && spi_get_csgpiod(spi, 0))
  		/* CS de-asserted, gpiolib will handle inversion */
  		gpiod_direction_output(spi_get_csgpiod(spi, 0), 0);
+<<<<<<< HEAD
 @@ -1140,6 +1128,10 @@ static int mtk_spi_probe(struct platform
  	mdata = spi_master_get_devdata(master);
  	mdata->dev_comp = device_get_match_data(dev);
  
+=======
+@@ -1146,6 +1134,11 @@ static int mtk_spi_probe(struct platform
+ 	host->use_gpio_descriptors = true;
+ 
+ 	mdata = spi_controller_get_devdata(host);
++
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 +	/* Set device configs to default first. Calibrate it later. */
 +	mdata->sample_sel = 0;
 +	mdata->get_tick_dly = 2;
 +
+<<<<<<< HEAD
  	if (mdata->dev_comp->enhance_timing)
  		master->mode_bits |= SPI_CS_HIGH;
  
+=======
+ 	mdata->dev_comp = device_get_match_data(dev);
+ 
+ 	if (mdata->dev_comp->enhance_timing)
+>>>>>>> 2ab15ff3e3c42f513cfc49ab3057b7eaa0392a78
 --- a/include/linux/platform_data/spi-mt65xx.h
 +++ /dev/null
 @@ -1,17 +0,0 @@
