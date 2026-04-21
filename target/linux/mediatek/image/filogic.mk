@@ -1640,6 +1640,21 @@ define Device/elecom_wrc-x3000gs3
 endef
 TARGET_DEVICES += elecom_wrc-x3000gs3
 
+define Device/fzs_5gcpe-p3
+  DEVICE_VENDOR := FZS
+  DEVICE_MODEL := 5GCPE P3
+  DEVICE_DTS := mt7981b-fzs-5gcpe-p3
+  DEVICE_DTS_DIR := ../dts
+  UBINIZE_OPTS := -E 5
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  KERNEL_IN_UBI := 1
+  DEVICE_PACKAGES := kmod-mt7915e kmod-mt7981-firmware mt7981-wo-firmware \
+	kmod-hwmon-pwmfan kmod-usb3 automount
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += fzs_5gcpe-p3
+
 define Device/gatonetworks_gdsp
   DEVICE_VENDOR := GatoNetworks
   DEVICE_MODEL := gdsp
